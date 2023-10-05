@@ -5,7 +5,7 @@ import Layout from '../layouts/Layout';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout/>,
+        element: <Layout />,
         // children: [
         //     {
         //         index: true,
