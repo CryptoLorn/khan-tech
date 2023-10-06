@@ -1,7 +1,7 @@
 import { ApiError } from '../errors/api.error.js';
 import { authValidator } from '../validations/auth.validator.js';
 import { userService } from '../services/user.service.js';
-import {tokenService} from "../services/token.service.js";
+import { tokenService } from '../services/token.service.js';
 
 export const authMiddleware = {
     isBodyForRegistrationValid: async (req, res, next) => {
@@ -59,5 +59,24 @@ export const authMiddleware = {
         } catch (e) {
             next(e);
         }
+    },
+
+    checkIsAuth: async (req, res, next) => {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            if (!token) {
+                throw new ApiError('Unauthorized', 401);
+            }
+
+            const userData = tokenService.validateAccessToken(token);
+            if (!userData) {
+                throw new ApiError('Unauthorized', 401);
+            }
+
+            req.res.locals = {userData, token};
+            next();
+        } catch (e) {
+            next(e);
+        }
     }
-}
+};

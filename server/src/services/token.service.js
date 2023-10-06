@@ -26,11 +26,19 @@ export const tokenService = {
         }
     },
 
+    validateAccessToken: (token) => {
+        try {
+            return jwt.verify(token, configs.ACCESS_KEY_SECRET);
+        } catch (e) {
+            throw new ApiError('Token not valid', 400);
+        }
+    },
+
     validateRefreshToken: (refreshToken) => {
         try {
             return jwt.verify(refreshToken, configs.REFRESH_KEY_SECRET);
         } catch (e) {
-            throw new ApiError('Token not valid');
+            throw new ApiError('Token not valid', 400);
         }
     },
 
@@ -41,4 +49,4 @@ export const tokenService = {
     removeToken: async (refreshToken) => {
         return await Token.destroy({where: {refresh_token: refreshToken}});
     }
-}
+};

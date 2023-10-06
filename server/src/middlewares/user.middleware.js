@@ -1,5 +1,6 @@
 import { ApiError } from '../errors/api.error.js';
 import { userService } from '../services/user.service.js';
+import { tokenService } from '../services/token.service.js';
 
 export const userMiddleware = {
     isUserPresent: async (req, res, next) => {
@@ -16,5 +17,21 @@ export const userMiddleware = {
         } catch (e) {
             next(e);
         }
+    },
+
+    checkRole: (role) => async (req, res, next) => {
+        try {
+            const {token} = req.res.locals;
+
+            const decodeUserData = tokenService.validateAccessToken(token);
+
+            if (decodeUserData.role !== role) {
+                throw new ApiError('No access rights', 403);
+            }
+
+            next();
+        } catch (e) {
+            next(e);
+        }
     }
-}
+};
