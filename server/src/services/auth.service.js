@@ -26,6 +26,15 @@ export const authService = {
         return {...user, tokens};
     },
 
+    refresh: async (refreshToken, userData) => {
+        const user = await User.findOne({where: {id: userData.id}});
+
+        const tokens = tokenService.generateJwt({id: user.id, email: user.email, role: user.role});
+        await authService.saveTokens({...tokens, userId: user.id});
+
+        return {tokens, user};
+    },
+
     saveTokens: async (tokens) => {
         const tokensData = await Token.findOne({where: {userId: tokens.userId}});
 
