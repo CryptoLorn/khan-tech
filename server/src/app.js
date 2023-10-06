@@ -6,7 +6,7 @@ import { sequelize } from './db.js';
 import { configs } from './configs/config.js';
 import * as model from './models/dependencies.js';
 import { router } from './routes/index.js';
-// const errorHandler = require('./error/errorHandler');
+import { handlerError } from './errors/handler.error.js';
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', router);
-// app.use(errorHandler);
+app.use(handlerError);
 
 const start = async () => {
     try {
