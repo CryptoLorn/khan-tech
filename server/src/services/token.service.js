@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import { configs } from '../configs/config.js';
 import { ApiError } from '../errors/api.error.js';
+import { Token } from '../models/token.model.js';
 
 export const tokenService = {
     hashPassword: async (password) => await bcrypt.hash(password, 10),
@@ -24,4 +25,16 @@ export const tokenService = {
             refresh_token
         }
     },
+
+    validateRefreshToken: (refreshToken) => {
+        try {
+            return jwt.verify(refreshToken, configs.REFRESH_KEY_SECRET);
+        } catch (e) {
+            throw new ApiError('Token not valid');
+        }
+    },
+
+    findToken: async (refreshToken) => {
+        return await Token.findOne({where: {refresh_token: refreshToken}});
+    }
 }
