@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 import { configs } from '../configs/config.js';
+import { ApiError } from '../errors/api.error.js';
 
 export const tokenService = {
     hashPassword: async (password) => await bcrypt.hash(password, 10),
@@ -10,7 +11,7 @@ export const tokenService = {
         const isPasswordSame = await bcrypt.compare(password, hashPassword);
 
         if (!isPasswordSame) {
-            throw ApiError.internal('Invalid email or password');
+            throw new ApiError('Invalid email or password', 400);
         }
     },
 
