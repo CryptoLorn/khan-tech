@@ -4,8 +4,8 @@ import cookieParser from 'cookie-parser';
 
 import { sequelize } from './db.js';
 import { configs } from './configs/config.js';
-// const models = require('./models/dependencies');
-// import router = from './routes/index';
+import * as model from './models/dependencies.js';
+import { router } from './routes/index.js';
 // const errorHandler = require('./error/errorHandler');
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use('/api', router);
+app.use('/', router);
 // app.use(errorHandler);
 
 const start = async () => {
