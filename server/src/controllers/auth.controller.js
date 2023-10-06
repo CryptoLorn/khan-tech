@@ -49,7 +49,7 @@ export const authController = {
 
             res.cookie(
                 tokenEnum.REFRESH_TOKEN,
-                user.refresh_token,
+                user.tokens.refresh_token,
                 {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true}
             );
 
@@ -57,5 +57,18 @@ export const authController = {
         } catch (e) {
             next(e);
         }
+    },
+
+    logout: async (req, res, next) => {
+        try {
+            const {refresh_token} = req.res.locals;
+
+            const token = await tokenService.removeToken(refresh_token);
+            res.clearCookie(tokenEnum.REFRESH_TOKEN);
+
+            return res.json(token);
+        } catch (e) {
+            next(e);
+        }
     }
-}
+};

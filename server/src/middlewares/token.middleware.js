@@ -34,4 +34,4 @@ export const tokenMiddleware = {
             next(e);
         }
     }
-}
+};

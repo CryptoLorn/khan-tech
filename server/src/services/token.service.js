@@ -36,5 +36,9 @@ export const tokenService = {
 
     findToken: async (refreshToken) => {
         return await Token.findOne({where: {refresh_token: refreshToken}});
+    },
+
+    removeToken: async (refreshToken) => {
+        return await Token.destroy({where: {refresh_token: refreshToken}});
     }
 }

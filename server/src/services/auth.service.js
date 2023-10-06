@@ -32,7 +32,7 @@ export const authService = {
         const tokens = tokenService.generateJwt({id: user.id, email: user.email, role: user.role});
         await authService.saveTokens({...tokens, userId: user.id});
 
-        return {tokens, user};
+        return {user: {...user.dataValues}, tokens};
     },
 
     saveTokens: async (tokens) => {

@@ -23,6 +23,9 @@ router.get('/refresh',
     tokenMiddleware.isDataPresentByToken,
     authController.refresh
 );
-// router.post('/logout', authController.logout);
+router.post('/logout',
+    tokenMiddleware.isRefreshTokenPresent,
+    authController.logout
+);
 
 export const authRouter = router;
