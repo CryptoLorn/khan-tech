@@ -20,7 +20,7 @@ app.use(cors({
     origin: configs.CLIENT_URL
 }));
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, 'static')));
+app.use(express.static(path.resolve(__dirname, 'src/static')));
 app.use(fileUpload());
 app.use(express.urlencoded({ extended: true }));
 

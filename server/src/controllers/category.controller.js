@@ -11,5 +11,15 @@ export const categoryController = {
         } catch (e) {
             next(e);
         }
+    },
+
+    getById: async (req, res, next) => {
+        try {
+            const {category} = req.res.locals;
+
+            return res.json(category);
+        } catch (e) {
+            next(e);
+        }
     }
 };

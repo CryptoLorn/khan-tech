@@ -7,5 +7,9 @@ export const categoryService = {
 
     findByName: async (name) => {
         return await Category.findOne({where: {name}});
+    },
+
+    getById: async (id) => {
+        return await Category.findByPk(id);
     }
 };

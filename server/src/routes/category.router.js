@@ -15,4 +15,9 @@ router.post('/',
     categoryController.create
 );
 
+router.get('/:id',
+    categoryMiddleware.isPresentById,
+    categoryController.getById
+);
+
 export const categoryRouter = router;

@@ -16,5 +16,21 @@ export const categoryMiddleware = {
         } catch (e) {
             next(e);
         }
+    },
+
+    isPresentById: async (req, res, next) => {
+        try {
+            const {id} = req.params;
+
+            const category = await categoryService.getById(id);
+            if (!category) {
+                throw new ApiError('Not found category with this id', 400);
+            }
+
+            req.res.locals = {category};
+            next();
+        } catch (e) {
+            next(e);
+        }
     }
 };
