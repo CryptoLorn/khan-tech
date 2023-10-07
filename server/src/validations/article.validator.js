@@ -5,11 +5,15 @@ export const articleValidator = {
         title: Joi
             .string()
             .required()
-            .messages({'string.empty': 'Title not be empty'}),
+            .messages({'string.empty': 'Title can not be empty'}),
         description: Joi
             .string()
             .required()
-            .messages({'string.empty': 'Description not be empty'}),
+            .messages({'string.empty': 'Description can not be empty'}),
+        time: Joi
+            .number()
+            .min(0)
+            .required(),
         userId: Joi
             .number()
             .integer()
@@ -26,6 +30,10 @@ export const articleValidator = {
             .optional(),
         description: Joi
             .string()
+            .optional(),
+        time: Joi
+            .number()
+            .min(0)
             .optional()
     })
 };

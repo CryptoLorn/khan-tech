@@ -19,7 +19,7 @@ export const articleService = {
         return await Article.create({...article, img: fileName});
     },
 
-    updateById: async (title, description, img, id, article) => {
+    updateById: async (title, description, time, img, id, article) => {
         // if user send new img
         if (img) {
             // remove old img from directory static
@@ -29,9 +29,9 @@ export const articleService = {
             const __dirname = path.resolve();
             img.mv(path.resolve(__dirname, 'src/static', fileName));
 
-            return await Article.update({title, description, img}, {where: {id}});
+            return await Article.update({title, description, time, img}, {where: {id}});
         } else {
-            return await Article.update({title, description}, {where: {id}});
+            return await Article.update({title, description, time}, {where: {id}});
         }
     },
 

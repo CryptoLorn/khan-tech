@@ -6,6 +6,7 @@ import path from 'node:path';
 
 import { sequelize } from './db.js';
 import { configs } from './configs/config.js';
+// register dependencies models
 import * as model from './models/dependencies.js';
 import { router } from './routes/index.js';
 import { handlerError } from './errors/handler.error.js';

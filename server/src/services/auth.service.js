@@ -5,7 +5,7 @@ import { Token } from '../models/token.model.js';
 import { ApiError } from '../errors/api.error.js';
 
 export const authService = {
-    registration: async (email, role, password) => {
+    registration: async (name, email, role, password) => {
         // check that first registered user is an administrator
         const isAdmin = await User.findOne({where: {role: roleEnum.ADMIN}});
         if (isAdmin && role === roleEnum.ADMIN) {
@@ -16,9 +16,9 @@ export const authService = {
 
         let user;
         if (isAdmin) {
-            user = await User.create({email, role, password: hashPassword});
+            user = await User.create({full_name: name, email, role, password: hashPassword});
         } else {
-            user = await User.create({email, role: roleEnum.ADMIN, password: hashPassword});
+            user = await User.create({full_name: name, email, role: roleEnum.ADMIN, password: hashPassword});
         }
 
         const tokens = tokenService.generateJwt({id: user.id, email: user.email, role: user.role});

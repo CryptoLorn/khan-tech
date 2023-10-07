@@ -13,13 +13,14 @@ export const articleController = {
 
     create: async (req, res, next) => {
         try {
-            const {title, description, userId, categoryId} = req.body;
+            const {title, description, time, userId, categoryId} = req.body;
             const {img} = req.files;
 
             const article = await articleService.create({
                 title,
                 description,
                 img,
+                time,
                 userId,
                 categoryId
             });
@@ -33,11 +34,18 @@ export const articleController = {
     updateById: async (req, res, next) => {
         try {
             const {id} = req.params;
-            const {title, description} = req.body;
+            const {title, description, time} = req.body;
             const img = req.files?.img;
             const {article} = req.res.locals;
 
-            const updatedArticle = await articleService.updateById(title, description, img, id, article);
+            const updatedArticle = await articleService.updateById(
+                title,
+                description,
+                time,
+                img,
+                id,
+                article
+            );
 
             return res.json(updatedArticle);
         } catch (e) {

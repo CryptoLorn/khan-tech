@@ -49,6 +49,10 @@ export const articleMiddleware = {
         try {
             const {title} = req.body;
 
+            if (!title) {
+                next();
+            }
+
             const article = await articleService.getByTitle(title);
             if (article) {
                 throw new ApiError('Article with this title is already present', 400);

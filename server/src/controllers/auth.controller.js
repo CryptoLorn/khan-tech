@@ -5,9 +5,9 @@ import { tokenService } from '../services/token.service.js';
 export const authController = {
     registration: async (req, res, next) => {
         try {
-            const {email, password, role} = req.body;
+            const {name, email, password, role} = req.body;
 
-            const data = await authService.registration(email, role, password);
+            const data = await authService.registration(name, email, role, password);
 
             res.cookie(
                 tokenEnum.REFRESH_TOKEN,

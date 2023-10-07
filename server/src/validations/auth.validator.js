@@ -5,6 +5,10 @@ import { roleEnum } from '../constants/role.enum.js';
 
 export const authValidator = {
     registration: Joi.object({
+        name: Joi
+            .string()
+            .required()
+            .messages({'string.empty': 'Name can not be empty'}),
         email: Joi
             .string()
             .required()
