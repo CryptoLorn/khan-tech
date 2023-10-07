@@ -63,11 +63,12 @@ export const authMiddleware = {
 
     checkIsAuth: async (req, res, next) => {
         try {
-            const token = req.headers.authorization.split(' ')[1];
-            if (!token) {
+            const bearerToken = req.headers.authorization;
+            if (!bearerToken) {
                 throw new ApiError('Unauthorized', 401);
             }
 
+            const token = bearerToken.split(' ')[1];
             const userData = tokenService.validateAccessToken(token);
             if (!userData) {
                 throw new ApiError('Unauthorized', 401);

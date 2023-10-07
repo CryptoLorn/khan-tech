@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
+import path from 'node:path';
 
 import { sequelize } from './db.js';
 import { configs } from './configs/config.js';
@@ -9,6 +11,7 @@ import { router } from './routes/index.js';
 import { handlerError } from './errors/handler.error.js';
 
 const app = express();
+const __dirname = path.resolve();
 
 app.use(cookieParser());
 app.use(cors({
@@ -16,6 +19,8 @@ app.use(cors({
     origin: configs.CLIENT_URL
 }));
 app.use(express.json());
+app.use(express.static(path.resolve(__dirname, 'static')));
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', router);
