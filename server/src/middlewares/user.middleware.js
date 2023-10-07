@@ -33,5 +33,21 @@ export const userMiddleware = {
         } catch (e) {
             next(e);
         }
+    },
+
+    isUserPresentById: async (req, res, next) => {
+        try {
+            const {id} = req.params;
+
+            const user = await userService.getById(id);
+            if (!user) {
+                throw new ApiError('Not found user with this email', 404);
+            }
+
+            req.res.locals = {user};
+            next();
+        } catch (e) {
+            next(e);
+        }
     }
 };
