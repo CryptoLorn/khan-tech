@@ -15,7 +15,7 @@ const HomeTopBlock = () => {
     const {user} = useSelector(state => state.user);
     const dispatch = useDispatch();
     const article = randomArticles[0];
-    const formattedDate = useFormattedDate(article?.createdAt);
+    const formattedDate = useFormattedDate(article.createdAt);
 
     useEffect(() => {
         if (!isLoadingCategory) {
@@ -26,32 +26,30 @@ const HomeTopBlock = () => {
 
     return (
         <div className={'home_top_block_wrapper'}>
-            {
-                article &&
-                <div className={'home_top_block'}>
-                    <div className={'home_top_block_img'}>
-                        <img src={baseURL + article.img} alt={article.title} />
-                    </div>
-                    <div className={'info_wrapper'}>
-                        <div className={'info_top'}>
-                            <div className={'category'}>{category?.name}</div>
-                            <div className={'title'}>{article.title}</div>
-                            <div className={'description'}>{article.description}</div>
-                        </div>
+            <div className={'home_top_block'}>
+                <div className={'home_top_block_img'}>
+                    <img src={baseURL + article.img} alt={article.title} />
+                </div>
 
-                        <div className={'info_bottom'}>
-                            <div className={'info_bottom_data_author_wrapper'}>
-                                <div className={'date'}>{formattedDate}</div>
-                                <div className={'author'}>{user?.full_name}</div>
-                            </div>
-                            <div className={'time'}>
-                                <img src={clock} alt={'clock'} />
-                                {article.time} min read
-                            </div>
+                <div className={'info_wrapper'}>
+                    <div className={'info_top'}>
+                        <div className={'category'}>{category?.name}</div>
+                        <div className={'title'}>{article.title}</div>
+                        <div className={'description'}>{article.description}</div>
+                    </div>
+
+                    <div className={'info_bottom'}>
+                        <div className={'info_bottom_data_author_wrapper'}>
+                            <div className={'date'}>{formattedDate}</div>
+                            <div className={'author'}>{user?.full_name}</div>
+                        </div>
+                        <div className={'time'}>
+                            <img src={clock} alt={'clock'} />
+                            {article.time} min read
                         </div>
                     </div>
                 </div>
-            }
+            </div>
 
             <LatestNews />
         </div>

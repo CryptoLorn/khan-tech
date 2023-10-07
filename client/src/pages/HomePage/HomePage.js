@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import './HomePage.css';
+import {articleActions} from '../../store/slices/article.slice';
 import HomeTopBlock from '../../components/HomeTopBlock/HomeTopBlock';
-import { articleActions } from '../../store/slices/article.slice';
+import HomeMiddleBlock from '../../components/HomeMiddleBlock/HomeMiddleBlock';
 
 const HomePage = () => {
-    const {articles} = useSelector(state => state.article);
+    const {isLoadingArticles} = useSelector(state => state.article);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -15,13 +16,16 @@ const HomePage = () => {
 
     return (
         <div className={'home_page_wrapper'}>
-            <div className={'home_page'}>
-                <HomeTopBlock />
+            {isLoadingArticles ?
+                <div>Loading</div>
+                :
+                <div className={'home_page'}>
+                    <HomeTopBlock/>
+                    <HomeMiddleBlock/>
 
-                {/*<HomeMiddleBlock />*/}
-
-                {/*<HomeBottomBlock />*/}
-            </div>
+                    {/*<HomeBottomBlock />*/}
+                </div>
+            }
         </div>
     );
 };
