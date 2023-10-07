@@ -6,7 +6,7 @@ const useFormattedDate = (initialDate) => {
     useEffect(() => {
         const formatDate = (dateString) => {
             const inputDate = new Date(dateString);
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
             // I get value of day, month and year
             const day = inputDate.getDate();
