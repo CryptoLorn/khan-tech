@@ -47,6 +47,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 500;
 }
 
 .header_right_block_menu:hover {

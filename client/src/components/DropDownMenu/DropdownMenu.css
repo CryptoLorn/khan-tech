@@ -1,0 +1,31 @@
+.dropdown {
+    border: 1px solid black;
+}
+
+.dropdown_menu_item {
+    padding: 0;
+    list-style: none;
+    border: 1px solid black;
+    position: absolute;
+
+    width: 130px;
+    margin-top: 3%;
+    border-top: 3px solid #0880AE;
+}
+
+.dropdown_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom_arrow {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border: 1px solid #252525; /* Цвет границы */
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg); /* Поворачиваем на 45 градусов */
+    margin-left: 5px;
+}

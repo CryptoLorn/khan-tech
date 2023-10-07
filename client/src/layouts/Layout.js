@@ -8,6 +8,8 @@ const Layout = () => {
         <div>
             <Header />
             <Outlet />
+            {/*soon*/}
+            {/*<Foter />*/}
         </div>
     );
 };

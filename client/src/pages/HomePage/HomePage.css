@@ -1,0 +1,10 @@
+.home_page_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.home_page {
+    width: 90%;
+}

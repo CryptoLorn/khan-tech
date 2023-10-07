@@ -2,6 +2,7 @@ import React from 'react';
 
 import './Header.css';
 import logo from '../../img/logo.png';
+import DropdownMenu from '../DropDownMenu/DropdownMenu';
 
 const Header = () => {
     return (
@@ -17,8 +18,8 @@ const Header = () => {
 
                 <div className={'header_right_block'}>
                     <div className={'header_right_block_menu'}>Home</div>
-                    <div className={'header_right_block_menu'}>Services</div>
-                    <div className={'header_right_block_menu'}>About</div>
+                    <div className={'header_right_block_menu'}><DropdownMenu name={'Services'} /></div>
+                    <div className={'header_right_block_menu'}><DropdownMenu name={'About'} /></div>
                     <div className={'header_right_block_menu'}>Book now</div>
                     <div className={'header_right_block_menu'}>Shop</div>
                     <div className={'header_right_block_menu'}>Blog</div>
