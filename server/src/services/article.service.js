@@ -11,6 +11,7 @@ export const articleService = {
     },
 
     create: async (article) => {
+        // generate correctly unique image name
         let fileName = uuidv4() + '.jpg';
         const __dirname = path.resolve();
         article.img.mv(path.resolve(__dirname, 'src/static', fileName));
@@ -19,7 +20,9 @@ export const articleService = {
     },
 
     updateById: async (title, description, img, id, article) => {
+        // if user send new img
         if (img) {
+            // remove old img from directory static
             await articleService.removeImg(article);
 
             let fileName = uuidv4() + '.jpg';
@@ -33,6 +36,7 @@ export const articleService = {
     },
 
     deleteById: async (id, article) => {
+        // remove img from directory static
         await articleService.removeImg(article);
 
         return await Article.destroy({where: {id}});
