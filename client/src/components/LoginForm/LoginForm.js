@@ -29,16 +29,18 @@ const LoginForm = () => {
 
     return (
         <div className={'login_form_wrapper'}>
-            <div className={'login_form'}>
-                <input type={'email'} {...register('email')}/>
-                <input type={'password'} {...register('password')}/>
+            <div className={'login_form_sub'}>
+                <div className={'login_form'}>
+                    <input type={'email'} {...register('email')}/>
+                    <input type={'password'} {...register('password')}/>
+                </div>
+                <div className={'error'}>
+                    {errors.email && <span className={'error_message'}>{errors.email.message}</span>}
+                    {errors.password && <span className={'error_message'}>{errors.password.message}</span>}
+                    {error && <span className={'error_message'}>{error.message}</span>}
+                </div>
+                <div className={'login_btn'} onClick={handleSubmit(submit)}>Login</div>
             </div>
-            <div className={'error'}>
-                {errors.email && <span className={'error_message'}>{errors.email.message}</span>}
-                {errors.password && <span className={'error_message'}>{errors.password.message}</span>}
-                {error && <span className={'error_message'}>{error.message}</span>}
-            </div>
-            <div className={'login_btn'} onClick={handleSubmit(submit)}>Login</div>
         </div>
     );
 };

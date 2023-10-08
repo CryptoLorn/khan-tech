@@ -1,0 +1,32 @@
+.admin_header_wrapper {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0dddd;
+    border-bottom: 1px solid #b9b1b1;
+}
+
+.admin_header {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin_header_btn {
+    width: 100px;
+    height: 40px;
+    background-color: #0880AE;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.admin_header_btn:hover {
+    background-color: #2997c2;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import AdminPage from '../pages/AdminPage/AdminPage';
 import LoginForm from '../components/LoginForm/LoginForm';
 import Dashboard from '../components/Dashboard/Dashboard';
 import RequireAuth from '../hooks/requireAuth';
+import DashboardArticles from '../components/DashboardArticles/DashboardArticles';
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
                     <RequireAuth>
                         <Dashboard />
                     </RequireAuth>,
+                children: [
+                    {
+                        path: '/admin/dashboard',
+                        element: <DashboardArticles />
+                    }
+                ]
             }
         ]
     },
