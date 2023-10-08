@@ -6,8 +6,17 @@ import { ApiError } from '../errors/api.error.js';
 import { Article } from '../models/article.model.js';
 
 export const articleService = {
-    getAll: async () => {
-        return await Article.findAll();
+    getAll: async (limit, page) => {
+        try {
+            page = page || 1;
+            limit = limit || 6;
+            let offset = page * limit - limit;
+            let correctLimit = Number(limit);
+
+            return await Article.findAndCountAll({limit: correctLimit, offset});
+        } catch (e) {
+            throw new ApiError(e.message);
+        }
     },
 
     create: async (article) => {

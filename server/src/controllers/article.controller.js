@@ -3,7 +3,9 @@ import { articleService } from '../services/article.service.js';
 export const articleController = {
     getAll: async (req, res, next) => {
         try {
-            const articles = await articleService.getAll();
+            const {limit, page} = req.query;
+
+            const articles = await articleService.getAll(limit, page);
 
             return res.json(articles);
         } catch (e) {
