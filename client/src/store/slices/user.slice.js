@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { userService } from '../../services/user.service';
 
 const initialState = {
-    user: null
+
 };
 
 export const getById = createAsyncThunk(
@@ -25,9 +25,7 @@ const userSlice = createSlice({
     },
     extraReducers: builder =>
         builder
-            .addCase(getById.fulfilled, (state, action) => {
-                state.user = action.payload;
-            })
+
 })
 
 const {reducer: userReducer, actions} = userSlice;

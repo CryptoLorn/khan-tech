@@ -6,18 +6,19 @@ const initialState = {
     articles: [],
     randomArticles: [],
     lastThreeArticles: [],
+    page: 1,
     isLoadingArticles: true,
 };
 
 export const getAll = createAsyncThunk(
     'articleSlice/getAll',
-    async (_, {dispatch, rejectWithValue}) => {
+    async ({limit, page}, {dispatch, rejectWithValue}) => {
         try {
-            const articles = await articleService.getAll();
-            await dispatch(setRandomArticle(articles));
-            await dispatch(setLastThreeArticle(articles));
+            const articles = await articleService.getAll(limit, page);
+            await dispatch(setRandomArticle(articles.rows));
+            await dispatch(setLastThreeArticle(articles.rows));
 
-            return articles;
+            return articles.rows;
         } catch (err) {
             return rejectWithValue(err.response.data);
         }
@@ -47,6 +48,10 @@ const articleSlice = createSlice({
 
         setLastThreeArticle: (state, action) => {
             state.lastThreeArticles = action.payload.slice(-3);
+        },
+
+        setPage: (state, action) => {
+            state.page = action.payload;
         }
     },
     extraReducers: builder =>
@@ -60,7 +65,7 @@ const articleSlice = createSlice({
 })
 
 const {reducer: articleReducer, actions} = articleSlice;
-const {setRandomArticle, setLastThreeArticle} = actions;
+const {setRandomArticle, setLastThreeArticle, setPage} = actions;
 
 const articleActions = {
     getAll,
@@ -70,5 +75,6 @@ export {
     articleReducer,
     articleActions,
     setRandomArticle,
-    setLastThreeArticle
+    setLastThreeArticle,
+    setPage
 };

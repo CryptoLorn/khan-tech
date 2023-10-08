@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './HomeTopBlock.css';
@@ -11,17 +11,17 @@ import { userActions } from '../../store/slices/user.slice';
 
 const HomeTopBlock = () => {
     const {randomArticles, isLoadingArticles} = useSelector(state => state.article);
-    const {category, isLoadingCategory} = useSelector(state => state.category);
-    const {user} = useSelector(state => state.user);
+    const [user, setUser] = useState(null);
+    const [category, setCategory] = useState(null);
     const dispatch = useDispatch();
     const article = randomArticles[0];
     const formattedDate = useFormattedDate(article.createdAt);
 
     useEffect(() => {
-        if (!isLoadingCategory) {
-            dispatch(categoryActions.getById({id: article.categoryId}));
-            dispatch(userActions.getById({id: article.userId}));
-        }
+        dispatch(categoryActions.getById({id: article.categoryId}))
+            .then(data => setCategory(data.payload));
+        dispatch(userActions.getById({id: article.userId}))
+            .then(data => setUser(data.payload));
     }, [isLoadingArticles]);
 
     return (

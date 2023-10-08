@@ -1,0 +1,9 @@
+.home_bottom_wrapper {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 50px;
+}

@@ -1,10 +1,9 @@
-import { createAsyncThunk, createSlice, isFulfilled } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { categoryService } from '../../services/category.service';
 
 const initialState = {
-    category: null,
-    isLoadingCategory: true,
+
 };
 
 export const getById = createAsyncThunk(
@@ -16,7 +15,7 @@ export const getById = createAsyncThunk(
             return rejectWithValue(err.response.data);
         }
     }
-)
+);
 
 const categorySlice = createSlice({
     name: 'categorySlice',
@@ -26,12 +25,7 @@ const categorySlice = createSlice({
     },
     extraReducers: builder =>
         builder
-            .addCase(getById.fulfilled, (state, action) => {
-                state.category = action.payload;
-            })
-            .addMatcher(isFulfilled(), state => {
-                state.isLoadingCategory = false;
-            })
+
 })
 
 const {reducer: categoryReducer, actions} = categorySlice;
@@ -43,5 +37,5 @@ const categoryActions = {
 
 export {
     categoryReducer,
-    categoryActions
+    categoryActions,
 };
