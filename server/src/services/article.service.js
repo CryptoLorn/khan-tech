@@ -36,9 +36,9 @@ export const articleService = {
 
             let fileName = uuidv4() + '.jpg';
             const __dirname = path.resolve();
-            img.mv(path.resolve(__dirname, 'src/static', fileName));
+            await img.img.mv(path.resolve(__dirname, 'src/static', fileName));
 
-            return await Article.update({title, description, time, img}, {where: {id}});
+            return await Article.update({title, description, time, img: fileName}, {where: {id}});
         } else {
             return await Article.update({title, description, time}, {where: {id}});
         }
@@ -70,10 +70,21 @@ export const articleService = {
         const parsePath = path.parse(fullPath);
         const dirPath = parsePath.dir;
 
-        await fs.unlink(`${dirPath}/server/src/static/${article.img}`, (err) => {
+        const folderPath = `${dirPath}/server/src/static/`;
+        const fileName = article.img;
+        const filePath = path.join(folderPath, fileName);
+
+        fs.access(filePath, fs.constants.F_OK, async (err) => {
             if (err) {
-                throw new ApiError('Path not found', 404);
+                console.error(`Файл ${fileName} відсутній в папці.`);
+            } else {
+                console.log(`Файл ${fileName} присутній в папці.`);
+                await fs.unlink(`${dirPath}/server/src/static/${article.img}`, (err) => {
+                    if (err) {
+                        throw new ApiError('Path not found', 404);
+                    }
+                })
             }
-        })
+        });
     }
 };

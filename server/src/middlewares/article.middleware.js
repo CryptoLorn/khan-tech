@@ -33,8 +33,9 @@ export const articleMiddleware = {
 
     isBodyUpdateValid: async (req, res, next) => {
         try {
-            const validate = await articleValidator.update.validate(req.body);
+            const {title, description, time} = req.body;
 
+            const validate = await articleValidator.update.validate({title, description, time});
             if (validate.error) {
                 throw new ApiError(validate.error.message, 400);
             }

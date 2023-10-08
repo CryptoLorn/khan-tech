@@ -7,5 +7,9 @@ export const userService = {
 
     getById: async (id) => {
         return await User.findByPk(id);
+    },
+
+    getAll: async () => {
+        return await User.findAll();
     }
 };

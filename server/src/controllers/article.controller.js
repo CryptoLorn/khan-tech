@@ -37,7 +37,7 @@ export const articleController = {
         try {
             const {id} = req.params;
             const {title, description, time} = req.body;
-            const img = req.files?.img;
+            const img = req.files;
             const {article} = req.res.locals;
 
             const updatedArticle = await articleService.updateById(

@@ -26,7 +26,6 @@ router.put('/:id',
     userMiddleware.checkRole(roleEnum.ADMIN),
     articleMiddleware.isBodyUpdateValid,
     articleMiddleware.checkIsPresentById,
-    articleMiddleware.isTitleUnique,
     articleController.updateById
 );
 

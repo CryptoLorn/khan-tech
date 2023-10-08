@@ -5,6 +5,10 @@ import { userController } from '../controllers/user.controller.js';
 
 const router = new Router();
 
+router.get('/',
+    userController.getAll
+);
+
 router.get('/:id',
     userMiddleware.isUserPresentById,
     userController.getById
