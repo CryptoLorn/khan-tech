@@ -1,8 +1,12 @@
+import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import Layout from '../layouts/Layout';
 import HomePage from '../pages/HomePage/HomePage';
 import AdminPage from '../pages/AdminPage/AdminPage';
+import LoginForm from '../components/LoginForm/LoginForm';
+import Dashboard from '../components/Dashboard/Dashboard';
+import RequireAuth from '../hooks/requireAuth';
 
 const router = createBrowserRouter([
     {
@@ -19,6 +23,19 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminPage />,
+        children: [
+            {
+                path: '/admin',
+                element: <LoginForm />
+            },
+            {
+                path: '/admin/dashboard',
+                element:
+                    <RequireAuth>
+                        <Dashboard />
+                    </RequireAuth>,
+            }
+        ]
     },
 ]);
 

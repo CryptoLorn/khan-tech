@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    row-gap: 15px;
+    row-gap: 5px;
 }
 
 .login_form {
@@ -20,6 +20,19 @@
     border: 1px solid #bebaba;
     padding-left: 10px;
     font-size: 14px;
+}
+
+.error {
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.error_message {
+    font-size: 10px;
+    color: red;
+    text-align: left;
 }
 
 .login_btn {
