@@ -7,6 +7,7 @@ const initialState = {
     randomArticles: [],
     lastThreeArticles: [],
     page: 1,
+    totalCount: 0,
     isLoadingArticles: true,
 };
 
@@ -17,6 +18,7 @@ export const getAll = createAsyncThunk(
             const articles = await articleService.getAll(limit, page);
             await dispatch(setRandomArticle(articles.rows));
             await dispatch(setLastThreeArticle(articles.rows));
+            await dispatch(setTotalCount(articles.count));
 
             return articles.rows;
         } catch (err) {
@@ -52,6 +54,10 @@ const articleSlice = createSlice({
 
         setPage: (state, action) => {
             state.page = action.payload;
+        },
+
+        setTotalCount: (state, action) => {
+            state.totalCount = action.payload;
         }
     },
     extraReducers: builder =>
@@ -65,7 +71,7 @@ const articleSlice = createSlice({
 })
 
 const {reducer: articleReducer, actions} = articleSlice;
-const {setRandomArticle, setLastThreeArticle, setPage} = actions;
+const {setRandomArticle, setLastThreeArticle, setPage, setTotalCount} = actions;
 
 const articleActions = {
     getAll,
@@ -76,5 +82,6 @@ export {
     articleActions,
     setRandomArticle,
     setLastThreeArticle,
-    setPage
+    setPage,
+    setTotalCount
 };

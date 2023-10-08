@@ -1,0 +1,39 @@
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
+import './Page.css';
+import { setPage } from '../../store/slices/article.slice';
+
+const Page = () => {
+    const {page, totalCount} = useSelector(state => state.article);
+    const dispatch = useDispatch();
+
+    let limit = 6;
+    const pageCount = Math.ceil(totalCount / limit);
+    const pages = [];
+
+    for (let i = 0; i < pageCount; i++) {
+        pages.push(i + 1);
+    }
+
+    const handlePageChange = (event, page) => {
+        dispatch(setPage(page));
+    }
+
+    return (
+        <div className={'pagination'}>
+            <Stack spacing={2}>
+                <Pagination
+                    count={pages.length}
+                    variant="outlined"
+                    color="primary"
+                    onChange={handlePageChange}
+                />
+            </Stack>
+        </div>
+    );
+};
+
+export default Page;
