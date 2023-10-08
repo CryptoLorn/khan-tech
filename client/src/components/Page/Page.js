@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-import './Page.css';
 import { setPage } from '../../store/slices/article.slice';
 
 const Page = () => {
-    const {page, totalCount} = useSelector(state => state.article);
+    const {totalCount} = useSelector(state => state.article);
     const dispatch = useDispatch();
 
     let limit = 6;
@@ -23,16 +22,14 @@ const Page = () => {
     }
 
     return (
-        <div className={'pagination'}>
-            <Stack spacing={2}>
-                <Pagination
-                    count={pages.length}
-                    variant="outlined"
-                    color="primary"
-                    onChange={handlePageChange}
-                />
-            </Stack>
-        </div>
+        <Stack spacing={2}>
+            <Pagination
+                count={pages.length}
+                variant="outlined"
+                color="primary"
+                onChange={handlePageChange}
+            />
+        </Stack>
     );
 };
 

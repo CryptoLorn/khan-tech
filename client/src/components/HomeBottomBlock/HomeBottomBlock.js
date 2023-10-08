@@ -10,11 +10,11 @@ const HomeBottomBlock = () => {
 
     return (
         <div className={'home_bottom_wrapper'}>
-            <div className={'articles_wrapper'}>
-                {articles.map(article => <ArticleItem key={article.id} article={article}/>)}
-            </div>
+            {articles.map(article => <ArticleItem key={article.id} article={article}/>)}
 
-            <Page />
+            <div className={'pagination'}>
+                <Page />
+            </div>
         </div>
     );
 };
