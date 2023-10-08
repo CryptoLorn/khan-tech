@@ -11,5 +11,9 @@ export const categoryService = {
 
     getById: async (id) => {
         return await Category.findByPk(id);
+    },
+
+    getAll: async () => {
+        return await Category.findAll();
     }
 };

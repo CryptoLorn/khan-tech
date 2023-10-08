@@ -20,4 +20,8 @@ router.get('/:id',
     categoryController.getById
 );
 
+router.get('/',
+    categoryController.getAll
+);
+
 export const categoryRouter = router;

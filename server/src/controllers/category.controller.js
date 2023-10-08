@@ -21,5 +21,15 @@ export const categoryController = {
         } catch (e) {
             next(e);
         }
+    },
+
+    getAll: async (req, res, next) => {
+        try {
+            const categories = await categoryService.getAll();
+
+            return res.json(categories);
+        } catch (e) {
+            next(e);
+        }
     }
 };
