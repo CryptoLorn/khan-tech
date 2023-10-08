@@ -25,8 +25,9 @@ const Page = () => {
         <Stack spacing={2}>
             <Pagination
                 count={pages.length}
-                variant="outlined"
-                color="primary"
+                size={'large'}
+                variant='outlined'
+                color='primary'
                 onChange={handlePageChange}
             />
         </Stack>
