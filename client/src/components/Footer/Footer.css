@@ -40,6 +40,11 @@
     row-gap: 8px;
 }
 
+.footer_top_info_categories span:hover {
+    cursor: pointer;
+    color: #0880AE;
+}
+
 .contact {
     display: flex;
     column-gap: 10px;

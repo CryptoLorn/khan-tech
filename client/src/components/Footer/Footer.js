@@ -14,19 +14,19 @@ const Footer = () => {
                     <div className={'footer_top_info_block_wrapper'}>
                         <div className={'footer_top_info_title'}>Departments</div>
                         <div className={'footer_top_info_categories'}>
-                            <div>Medical</div>
-                            <div>Pharmaceuticals</div>
-                            <div>Medical Equipment</div>
+                            <span>Medical</span>
+                            <span>Pharmaceuticals</span>
+                            <span>Medical Equipment</span>
                         </div>
                     </div>
 
                     <div className={'footer_top_info_block_wrapper'}>
                         <div className={'footer_top_info_title'}>Quick Links</div>
                         <div className={'footer_top_info_categories'}>
-                            <div>What do we do?</div>
-                            <div>Our expertise</div>
-                            <div>Request an Appointment</div>
-                            <div>Book with a Specialist</div>
+                            <span>What do we do?</span>
+                            <span>Our expertise</span>
+                            <span>Request an Appointment</span>
+                            <span>Book with a Specialist</span>
                         </div>
                     </div>
 
