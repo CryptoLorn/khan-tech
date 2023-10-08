@@ -53,6 +53,11 @@
     font-weight: 500;
 }
 
+.title:hover {
+    cursor: pointer;
+    color: #0880AE;
+}
+
 .description {
     font-size: 14px;
     font-weight: 400;

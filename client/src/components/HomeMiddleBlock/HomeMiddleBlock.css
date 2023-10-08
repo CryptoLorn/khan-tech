@@ -47,6 +47,11 @@
     font-weight: 500;
 }
 
+.home_middle_info_title:hover {
+    cursor: pointer;
+    color: #0880AE;
+}
+
 .home_middle_info_description {
     font-size: 14px;
     font-weight: 400;
