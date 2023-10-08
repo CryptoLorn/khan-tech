@@ -28,7 +28,7 @@ export const isAuth = createAsyncThunk(
         try {
             const data = await authService.checkIsAuth();
 
-            localStorage.setItem(ACCESS_TOKEN, data.access_token);
+            localStorage.setItem(ACCESS_TOKEN, data.tokens.access_token);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data.message);

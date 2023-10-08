@@ -3,8 +3,19 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { userService } from '../../services/user.service';
 
 const initialState = {
-
+    users: []
 };
+
+export const getAll = createAsyncThunk(
+    'userSlice/getAll',
+    async (_, {rejectWithValue}) => {
+        try {
+            return await userService.getAll();
+        } catch (err) {
+            return rejectWithValue(err.response.data);
+        }
+    }
+)
 
 export const getById = createAsyncThunk(
     'userSlice/getById',
@@ -15,7 +26,7 @@ export const getById = createAsyncThunk(
             return rejectWithValue(err.response.data);
         }
     }
-)
+);
 
 const userSlice = createSlice({
     name: 'userSlice',
@@ -25,6 +36,9 @@ const userSlice = createSlice({
     },
     extraReducers: builder =>
         builder
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.users = action.payload;
+            })
 
 })
 
@@ -32,6 +46,7 @@ const {reducer: userReducer, actions} = userSlice;
 const {} = actions;
 
 const userActions = {
+    getAll,
     getById,
 };
 

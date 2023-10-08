@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import './DashboardArticles.css';
 import DashboardArticleItem from '../DashboardArticleItem/DashboardArticleItem';
 import Page from '../Page/Page';
-import UpdateForm from "../UpdateForm/UpdateForm";
+import UpdateForm from '../UpdateForm/UpdateForm';
 
 const DashboardArticles = () => {
     const {articles} = useSelector(state => state.article);

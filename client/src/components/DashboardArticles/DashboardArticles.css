@@ -1,7 +1,5 @@
 .dashboard_articles_wrapper {
     display: flex;
-
-    border: 1px solid black;
 }
 
 .dashboard_articles {

@@ -4,15 +4,15 @@ import { useDispatch } from 'react-redux';
 import './DashboardArticleItem.css';
 import clock from '../../img/clock.png';
 import baseURL from '../../configs/urls';
-import useFormattedDate from '../../hooks/useFormattedDate';
 import { categoryActions } from '../../store/slices/category.slice';
 import { userActions } from '../../store/slices/user.slice';
+import { setArticleForUpdate } from '../../store/slices/article.slice';
 
-const DashboardArticleItem = ({article: {title, img, time, categoryId, userId, createdAt}}) => {
+const DashboardArticleItem = ({article}) => {
+    const {title, img, time, categoryId, userId, createdAt} = article;
     const [user, setUser] = useState(null);
     const [category, setCategory] = useState(null);
     const dispatch = useDispatch();
-    const formattedDate = useFormattedDate(createdAt);
 
     useEffect(() => {
         dispatch(categoryActions.getById({id: categoryId}))
@@ -20,6 +20,10 @@ const DashboardArticleItem = ({article: {title, img, time, categoryId, userId, c
         dispatch(userActions.getById({id: userId}))
             .then(data => setUser(data.payload));
     }, [categoryId, userId]);
+
+    const articleForUpdate = (article) => {
+        dispatch(setArticleForUpdate(article));
+    }
 
     return (
         <div className={'dashboard_article_item_wrapper'}>
@@ -43,8 +47,17 @@ const DashboardArticleItem = ({article: {title, img, time, categoryId, userId, c
                     </div>
                 </div>
                 <div className={'dashboard_article_item_btn_wrapper'}>
-                    <div className={'dashboard_article_item_btn'}>Update</div>
-                    <div className={'dashboard_article_item_btn'}>Delete</div>
+                    <div
+                        className={'dashboard_article_item_btn'}
+                        onClick={() => articleForUpdate(article)}
+                    >
+                        Update
+                    </div>
+                    <div
+                        className={'dashboard_article_item_btn'}
+                    >
+                        Delete
+                    </div>
                 </div>
             </div>
         </div>
