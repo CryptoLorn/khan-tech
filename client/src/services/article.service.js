@@ -8,5 +8,9 @@ export const articleService = {
 
     updateById: (id, article) => authAxiosService
         .put(`${urls.articles}/${id}`, article)
+        .then(value => value.data),
+
+    deleteById: (id) => authAxiosService
+        .delete(`${urls.articles}/${id}`)
         .then(value => value.data)
 };

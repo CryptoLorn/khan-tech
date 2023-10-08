@@ -10,6 +10,7 @@ const initialState = {
     totalCount: 0,
     isLoadingArticles: true,
     articleForUpdate: null,
+    articleForDelete: null,
     error: null
 };
 
@@ -31,10 +32,21 @@ export const getAll = createAsyncThunk(
 
 export const updateById = createAsyncThunk(
     'articleSlice/updateById',
-    async ({id, article}, {dispatch, rejectWithValue}) => {
+    async ({id, article}, {rejectWithValue}) => {
         try {
-            const {articles} = await articleService.updateById(id, article);
-            console.log(articles)
+            await articleService.updateById(id, article);
+
+        } catch (err) {
+            return rejectWithValue(err.response.data);
+        }
+    }
+);
+
+export const deleteById = createAsyncThunk(
+    'articleSlice/deleteById',
+    async ({id}, {rejectWithValue}) => {
+        try {
+            await articleService.deleteById(id);
 
         } catch (err) {
             return rejectWithValue(err.response.data);
@@ -77,6 +89,10 @@ const articleSlice = createSlice({
 
         setArticleForUpdate: (state, action) => {
             state.articleForUpdate = action.payload;
+        },
+
+        setArticleForDelete: (state, action) => {
+            state.articleForDelete = action.payload;
         }
     },
     extraReducers: builder =>
@@ -86,11 +102,13 @@ const articleSlice = createSlice({
             })
             .addCase(updateById.fulfilled, (state, action) => {
                 state.articleForUpdate = null;
-                // const index = state.articles.findIndex(sneaker => sneaker.id === action.payload.article.id);
-                // state.articles[index] = action.payload.article;
+                state.error = null;
             })
             .addCase(updateById.rejected, (state, action) => {
                 state.error = action.payload;
+            })
+            .addCase(deleteById.fulfilled, (state, action) => {
+                state.articleForDelete = null;
             })
             .addMatcher(isFulfilled(), state => {
                 state.isLoadingArticles = false;
@@ -103,12 +121,14 @@ const {
     setLastThreeArticle,
     setPage,
     setTotalCount,
-    setArticleForUpdate
+    setArticleForUpdate,
+    setArticleForDelete
 } = actions;
 
 const articleActions = {
     getAll,
-    updateById
+    updateById,
+    deleteById
 };
 
 export {
@@ -118,5 +138,6 @@ export {
     setLastThreeArticle,
     setPage,
     setTotalCount,
-    setArticleForUpdate
+    setArticleForUpdate,
+    setArticleForDelete
 };

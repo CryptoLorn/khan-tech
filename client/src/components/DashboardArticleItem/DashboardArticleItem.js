@@ -6,10 +6,10 @@ import clock from '../../img/clock.png';
 import baseURL from '../../configs/urls';
 import { categoryActions } from '../../store/slices/category.slice';
 import { userActions } from '../../store/slices/user.slice';
-import { setArticleForUpdate } from '../../store/slices/article.slice';
+import { articleActions, setArticleForDelete, setArticleForUpdate } from '../../store/slices/article.slice';
 
 const DashboardArticleItem = ({article}) => {
-    const {title, img, time, categoryId, userId, createdAt} = article;
+    const {title, img, time, categoryId, userId, id} = article;
     const [user, setUser] = useState(null);
     const [category, setCategory] = useState(null);
     const dispatch = useDispatch();
@@ -23,6 +23,11 @@ const DashboardArticleItem = ({article}) => {
 
     const articleForUpdate = (article) => {
         dispatch(setArticleForUpdate(article));
+    }
+
+    const deleteById = async (id) => {
+        dispatch(setArticleForDelete(article));
+        await dispatch(articleActions.deleteById({id}));
     }
 
     return (
@@ -55,6 +60,7 @@ const DashboardArticleItem = ({article}) => {
                     </div>
                     <div
                         className={'dashboard_article_item_btn'}
+                        onClick={() => deleteById(id)}
                     >
                         Delete
                     </div>

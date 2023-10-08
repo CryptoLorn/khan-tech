@@ -9,13 +9,13 @@ import { articleActions } from '../../store/slices/article.slice';
 const AdminHeader = () => {
     const navigate = useNavigate();
 
-    const {page, articleForUpdate} = useSelector(state => state.article);
+    const {page, articleForUpdate, articleForDelete} = useSelector(state => state.article);
     const dispatch = useDispatch();
     const limit = 6;
 
     useEffect(() => {
         dispatch(articleActions.getAll({limit, page}));
-    }, [page, articleForUpdate]);
+    }, [page, articleForUpdate, articleForDelete]);
 
     const logout = async () => {
         await authService.logout();

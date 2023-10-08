@@ -33,9 +33,9 @@ const UpdateForm = () => {
         formData.append('description', data.description);
         formData.append('time', data.time);
 
-        dispatch(articleActions.updateById({id: articleForUpdate.id, article: formData}));
+        await dispatch(articleActions.updateById({id: articleForUpdate.id, article: formData}));
         reset();
-    }
+    };
 
     return (
         <div className={'update_form_wrapper'}>
