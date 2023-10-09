@@ -68,6 +68,7 @@ const CreateForm = () => {
                         }
 
                         <select {...register('category')}>
+                            <option></option>
                             {
                                 categories &&
                                 categories.map(category =>
@@ -80,6 +81,7 @@ const CreateForm = () => {
                                 )}
                         </select>
                         <select {...register('author')}>
+                            <option></option>
                             {
                                 users && users.map(user =>
                                     <option

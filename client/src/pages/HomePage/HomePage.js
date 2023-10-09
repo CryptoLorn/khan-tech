@@ -8,7 +8,7 @@ import HomeMiddleBlock from '../../components/HomeMiddleBlock/HomeMiddleBlock';
 import HomeBottomBlock from '../../components/HomeBottomBlock/HomeBottomBlock';
 
 const HomePage = () => {
-    const {isLoadingArticles, page} = useSelector(state => state.article);
+    const {isLoadingArticles, page, articles} = useSelector(state => state.article);
     const dispatch = useDispatch();
     const limit = 6;
 
@@ -22,8 +22,12 @@ const HomePage = () => {
                 <div>Loading</div>
                 :
                 <div className={'home_page'}>
-                    <HomeTopBlock />
-                    <HomeMiddleBlock />
+                    {articles.length > 1 &&
+                        <>
+                            <HomeTopBlock />
+                            <HomeMiddleBlock />
+                        </>
+                    }
                     <HomeBottomBlock />
                 </div>
             }

@@ -14,6 +14,12 @@ export const articleValidator = {
             .number()
             .min(0)
             .required(),
+        category: Joi
+            .number()
+            .required(),
+        author: Joi
+            .number()
+            .required()
     }),
     update: Joi.object({
         title: Joi

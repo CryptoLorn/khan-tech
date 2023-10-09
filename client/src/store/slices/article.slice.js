@@ -71,20 +71,22 @@ const articleSlice = createSlice({
     initialState,
     reducers: {
         setRandomArticle: (state, action) => {
-            // generate random index
-            let randomIndex1 = Math.floor(Math.random() * action.payload.length);
-            let randomIndex2;
+            if (action.payload.length > 1) {
+                // generate random index
+                let randomIndex1 = Math.floor(Math.random() * action.payload.length);
+                let randomIndex2;
 
-            // checking if the indices are different
-            do {
-                randomIndex2 = Math.floor(Math.random() * action.payload.length);
-            } while (randomIndex2 === randomIndex1);
+                // checking if the indices are different
+                do {
+                    randomIndex2 = Math.floor(Math.random() * action.payload.length);
+                } while (randomIndex2 === randomIndex1);
 
-            // getting random elements by their indices
-            const randomElement1 = action.payload[randomIndex1];
-            const randomElement2 = action.payload[randomIndex2];
+                // getting random elements by their indices
+                const randomElement1 = action.payload[randomIndex1];
+                const randomElement2 = action.payload[randomIndex2];
 
-            state.randomArticles.push(randomElement1, randomElement2);
+                state.randomArticles.push(randomElement1, randomElement2);
+            }
         },
 
         setLastThreeArticle: (state, action) => {
