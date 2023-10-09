@@ -24,8 +24,6 @@ const CreateForm = () => {
         dispatch(categoryActions.getAll());
     }, []);
 
-    console.log(error)
-
     const selectFile = e => {
         setFile(e.target.files[0]);
     }
