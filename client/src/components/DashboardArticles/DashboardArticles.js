@@ -5,21 +5,32 @@ import './DashboardArticles.css';
 import DashboardArticleItem from '../DashboardArticleItem/DashboardArticleItem';
 import Page from '../Page/Page';
 import UpdateForm from '../UpdateForm/UpdateForm';
+import CreateForm from '../CreateForm/CreateForm';
 
 const DashboardArticles = () => {
-    const {articles} = useSelector(state => state.article);
+    const {articles, articleForUpdate} = useSelector(state => state.article);
 
     return (
         <div className={'dashboard_articles_wrapper'}>
             <div className={'dashboard_articles'}>
-                {articles.map(article => <DashboardArticleItem key={article.id} article={article} />)}
+                {articles
+                    .map(article =>
+                        <DashboardArticleItem
+                            key={article.id}
+                            article={article}
+                        />
+                    )}
 
                 <div>
                     <Page />
                 </div>
             </div>
 
-            <UpdateForm />
+            {articleForUpdate ?
+                <UpdateForm />
+                :
+                <CreateForm />
+            }
         </div>
     );
 };

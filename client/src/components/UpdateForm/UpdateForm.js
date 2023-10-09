@@ -41,16 +41,28 @@ const UpdateForm = () => {
         <div className={'update_form_wrapper'}>
             <div className={'update_form'}>
                 <form className={'update_form_input'}>
-                    <input type={'text'} {...register('title')} />
-                    <input type={'text'} {...register('description')} />
-                    <input type={'number'} {...register('time')} />
+                    <input type={'text'} placeholder={'title'} {...register('title')} />
+                    {errors.title?.message &&
+                        <span className={'update_form_error'}>
+                            {errors.title.message}
+                        </span>
+                    }
+
+                    <input type={'text'} placeholder={'description'} {...register('description')} />
+                    {errors.description?.message &&
+                        <span className={'update_form_error'}>
+                            {errors.description.message}
+                        </span>
+                    }
+
+                    <input type={'number'} placeholder={'time'} {...register('time')} />
+                    {errors.time?.message &&
+                        <span className={'update_form_error'}>
+                            {errors.time.message}
+                        </span>
+                    }
                 </form>
-                <div>
-                    {errors.title?.message && <span className={'update_form_error'}>{errors.title.message}</span>}
-                    {errors.description?.message && <span className={'update_form_error'}>{errors.description.message}</span>}
-                    {errors.time?.message && <span className={'update_form_error'}>{errors.time.message}</span>}
-                    {error && <span className={'update_form_error'}>{error.message}</span>}
-                </div>
+                {error && <span className={'update_form_error'}>{error.message}</span>}
                 <input type={'file'} onChange={selectFile} />
             </div>
             <div

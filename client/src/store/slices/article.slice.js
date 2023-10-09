@@ -4,6 +4,7 @@ import { articleService } from '../../services/article.service';
 
 const initialState = {
     articles: [],
+    article: null,
     randomArticles: [],
     lastThreeArticles: [],
     page: 1,
@@ -48,6 +49,17 @@ export const deleteById = createAsyncThunk(
         try {
             await articleService.deleteById(id);
 
+        } catch (err) {
+            return rejectWithValue(err.response.data);
+        }
+    }
+);
+
+export const create = createAsyncThunk(
+    'articleSlice/create',
+    async ({article}, {rejectWithValue}) => {
+        try {
+            return await articleService.create(article);
         } catch (err) {
             return rejectWithValue(err.response.data);
         }
@@ -110,6 +122,13 @@ const articleSlice = createSlice({
             .addCase(deleteById.fulfilled, (state, action) => {
                 state.articleForDelete = null;
             })
+            .addCase(create.fulfilled, (state, action) => {
+                state.article = action.payload;
+                state.error = null;
+            })
+            .addCase(create.rejected, (state, action) => {
+                state.error = action.payload;
+            })
             .addMatcher(isFulfilled(), state => {
                 state.isLoadingArticles = false;
             })
@@ -128,7 +147,8 @@ const {
 const articleActions = {
     getAll,
     updateById,
-    deleteById
+    deleteById,
+    create
 };
 
 export {

@@ -4,18 +4,17 @@ import { useNavigate } from 'react-router-dom';
 
 import './AdminHeader.css';
 import { authService } from '../../services/auth.service';
-import { articleActions } from '../../store/slices/article.slice';
+import { articleActions, setArticleForUpdate } from '../../store/slices/article.slice';
 
 const AdminHeader = () => {
-    const navigate = useNavigate();
-
-    const {page, articleForUpdate, articleForDelete} = useSelector(state => state.article);
+    const {page, article, articleForUpdate, articleForDelete} = useSelector(state => state.article);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const limit = 6;
 
     useEffect(() => {
         dispatch(articleActions.getAll({limit, page}));
-    }, [page, articleForUpdate, articleForDelete]);
+    }, [page, article, articleForUpdate, articleForDelete]);
 
     const logout = async () => {
         await authService.logout();
@@ -25,8 +24,18 @@ const AdminHeader = () => {
     return (
         <div className={'admin_header_wrapper'}>
             <div className={'admin_header'}>
-                <div className={'admin_header_btn'}>Add news</div>
-                <div className={'admin_header_btn'} onClick={logout}>Logout</div>
+                <div
+                    className={'admin_header_btn'}
+                    onClick={() => dispatch(setArticleForUpdate(null))}
+                >
+                    Add news
+                </div>
+                <div
+                    className={'admin_header_btn'}
+                    onClick={logout}
+                >
+                    Logout
+                </div>
             </div>
         </div>
     );

@@ -13,7 +13,13 @@ export const articleService = {
             let offset = page * limit - limit;
             let correctLimit = Number(limit);
 
-            return await Article.findAndCountAll({limit: correctLimit, offset});
+            return await Article.findAndCountAll(
+                {
+                    order: [['createdAt', 'DESC']],
+                    limit: correctLimit,
+                    offset
+                }
+            );
         } catch (e) {
             throw new ApiError(e.message);
         }

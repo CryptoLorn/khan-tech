@@ -12,5 +12,9 @@ export const articleService = {
 
     deleteById: (id) => authAxiosService
         .delete(`${urls.articles}/${id}`)
+        .then(value => value.data),
+
+    create: (article) => authAxiosService
+        .post(urls.articles, article)
         .then(value => value.data)
 };

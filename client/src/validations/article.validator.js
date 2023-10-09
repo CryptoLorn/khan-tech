@@ -14,14 +14,6 @@ export const articleValidator = {
             .number()
             .min(0)
             .required(),
-        userId: Joi
-            .number()
-            .integer()
-            .required(),
-        categoryId: Joi
-            .number()
-            .integer()
-            .required()
     }),
     update: Joi.object({
         title: Joi
