@@ -5,6 +5,7 @@ import logo from '../../img/logo.png';
 import DropdownMenu from '../DropDownMenu/DropdownMenu';
 
 const Header = () => {
+
     return (
         <div className={'header_wrapper'}>
             <div className={'header'}>
@@ -21,7 +22,7 @@ const Header = () => {
                     <div className={'header_right_block_menu'}><DropdownMenu name={'Services'} /></div>
                     <div className={'header_right_block_menu'}><DropdownMenu name={'About'} /></div>
                     <div className={'header_right_block_menu'}>Book now</div>
-                    <div className={'header_right_block_menu'}>Shop</div>
+                    <div className={'header_right_block_menu'}><DropdownMenu name={'Shop'} /></div>
                     <div className={'header_right_block_menu'}>Blog</div>
                     <div className={'header_right_block_menu'}>Contact</div>
                 </div>
