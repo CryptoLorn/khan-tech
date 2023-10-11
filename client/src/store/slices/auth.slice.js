@@ -24,7 +24,7 @@ export const login = createAsyncThunk(
 
 export const isAuth = createAsyncThunk(
     'authSlice/isAuth',
-    async (_, {dispatch, rejectWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const data = await authService.checkIsAuth();
 
@@ -32,6 +32,17 @@ export const isAuth = createAsyncThunk(
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data.message);
+        }
+    }
+);
+
+export const logout = createAsyncThunk(
+    'authSlice/logout',
+    async (_, {rejectWithValue}) => {
+        try {
+            await authService.logout().then(data => localStorage.removeItem(ACCESS_TOKEN));
+        } catch (err) {
+            return rejectWithValue(err.response.data);
         }
     }
 );
@@ -60,6 +71,9 @@ const authSlice = createSlice({
             .addCase(isAuth.rejected, (state, action) => {
                 state.error = action.payload;
             })
+            .addCase(logout.fulfilled, (state, action) => {
+                state.user = null;
+            })
 })
 
 const {reducer: authReducer, actions} = authSlice;
@@ -67,7 +81,8 @@ const {setError} = actions;
 
 const authActions = {
     login,
-    isAuth
+    isAuth,
+    logout
 };
 
 export {

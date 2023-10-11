@@ -8,6 +8,7 @@ import LoginForm from '../components/LoginForm/LoginForm';
 import Dashboard from '../components/Dashboard/Dashboard';
 import RequireAuth from '../hooks/requireAuth';
 import DashboardArticles from '../components/DashboardArticles/DashboardArticles';
+import IsAuth from '../hooks/isAuth';
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,10 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/admin',
-                element: <LoginForm />
+                element:
+                    <IsAuth>
+                        <LoginForm/>
+                    </IsAuth>
             },
             {
                 path: '/admin/dashboard',
