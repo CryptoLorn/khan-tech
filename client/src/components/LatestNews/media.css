@@ -1,0 +1,13 @@
+@media screen and (max-width: 640px) {
+    .latest_news_wrapper {
+        row-gap: 10px;
+    }
+
+    .latest_news_title {
+        font-size: 22px;
+    }
+
+    .latest_news_item {
+        row-gap: 15px;
+    }
+}

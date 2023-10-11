@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import './AdminHeader.css';
-import { authService } from '../../services/auth.service';
 import { articleActions, setArticleForUpdate } from '../../store/slices/article.slice';
+import { authActions } from '../../store/slices/auth.slice';
 
 const AdminHeader = () => {
     const {page, article, articleForUpdate, articleForDelete} = useSelector(state => state.article);
@@ -17,7 +17,7 @@ const AdminHeader = () => {
     }, [page, article, articleForUpdate, articleForDelete]);
 
     const logout = async () => {
-        await authService.logout();
+        await dispatch(authActions.logout());
         navigate('/admin');
     }
 

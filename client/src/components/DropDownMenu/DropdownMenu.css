@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.bottom_arrow, .right_arrow {
+.bottom_arrow, .right_arrow, .top_arrow {
     display: inline-block;
     width: 5px;
     height: 5px;
@@ -60,6 +60,18 @@
     border-left: none;
     transform: rotate(45deg);
     margin-left: 5px;
+}
+
+.top_arrow {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border: 1px solid #252525;
+    transform: rotate(45deg);
+    border-bottom: none;
+    border-right: none;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
 .right_arrow {

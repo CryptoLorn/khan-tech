@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import './DashboardArticles.css';
+import './media.css';
 import DashboardArticleItem from '../DashboardArticleItem/DashboardArticleItem';
 import Page from '../Page/Page';
 import UpdateForm from '../UpdateForm/UpdateForm';
@@ -21,7 +22,7 @@ const DashboardArticles = () => {
                         />
                     )}
 
-                <div>
+                <div className={'page'}>
                     <Page />
                 </div>
             </div>

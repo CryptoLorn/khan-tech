@@ -1,0 +1,27 @@
+@media screen and (max-width: 640px) {
+    .footer_wrapper {
+        height: 230px;
+        margin-top: 30px;
+    }
+
+    .footer_top_info {
+        height: 95%;
+        column-gap: 10px;
+    }
+
+    .footer_top_info_block_wrapper_optional {
+        display: none;
+    }
+
+    .footer_top_info_title {
+        font-size: 16px;
+    }
+
+    .footer_top_info_categories {
+        font-size: 12px;
+    }
+
+    .rights_reserved {
+        font-size: 10px;
+    }
+}

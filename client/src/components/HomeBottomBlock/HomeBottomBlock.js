@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import './HomeBottomBlock.css';
+import './media.css';
 import ArticleItem from '../ArticleItem/ArticleItem';
 import Page from '../Page/Page';
 

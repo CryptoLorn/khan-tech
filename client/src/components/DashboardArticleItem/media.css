@@ -1,0 +1,66 @@
+@media screen and (max-width: 640px) {
+    .dashboard_article_item_wrapper {
+        width: 173px;
+        height: 100px;
+    }
+
+    .dashboard_article_item_img {
+        min-width: 150px;
+        height: 110px;
+    }
+
+    .dashboard_article_item_img img {
+        max-width: 200px;
+    }
+
+    .dashboard_article_item_info_wrapper {
+        width: 100%;
+        height: 110px;
+    }
+
+    .dashboard_article_item_info_top {
+        display: flex;
+        flex-direction: column;
+        height: 55%;
+        margin-top: 5px;
+        overflow: hidden;
+    }
+
+    .dashboard_article_item_category {
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .dashboard_article_item_title {
+        font-size: 12px;
+    }
+
+    .dashboard_article_item_info_bottom {
+        column-gap: 5px;
+    }
+
+    .dashboard_article_item_info_bottom_data_author_wrapper {
+        column-gap: 5px;
+    }
+
+    .dashboard_article_item_time {
+        font-size: 10px;
+    }
+
+    .dashboard_article_item_time img {
+        width: 10px;
+        height: 10px;
+    }
+
+    .dashboard_article_item_author {
+        font-size: 10px;
+    }
+
+    .dashboard_article_item_btn_wrapper {
+        margin-top: 5px;
+    }
+
+    .dashboard_article_item_btn {
+        font-size: 12px;
+    }
+}

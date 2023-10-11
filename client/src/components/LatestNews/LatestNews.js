@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './LatestNews.css';
+import './media.css';
 import { useSelector } from 'react-redux';
 import LatestNewsItem from '../LatestNewsItem/LatestNewsItem';
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './HomeTopBlock.css';
+import './media.css';
 import clock from '../../img/clock.png';
 import baseURL from '../../configs/urls';
 import LatestNews from '../LatestNews/LatestNews';

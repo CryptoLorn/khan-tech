@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 
 import './CreateForm.css';
+import './media.css';
 import { userActions } from '../../store/slices/user.slice';
 import { categoryActions } from '../../store/slices/category.slice';
 import { articleActions } from '../../store/slices/article.slice';

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import './DropdownMenu.css';
+import './media.css';
 
 const DropdownMenu = ({name}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,6 @@ const DropdownMenu = ({name}) => {
         setIsSubMenuOpen(false);
     };
 
-    console.log(isOpen)
-
     return (
         <div className='dropdown' onMouseEnter={toggleMenu} onMouseLeave={toggleMenuHide}>
             <div>
@@ -31,7 +30,7 @@ const DropdownMenu = ({name}) => {
                     className={'dropdown_title'}
                 >
                     {name}
-                    <div className={'bottom_arrow'}> </div>
+                    <div className={isOpen ? 'top_arrow' : 'bottom_arrow'}> </div>
                 </div>
 
                 {isOpen && (

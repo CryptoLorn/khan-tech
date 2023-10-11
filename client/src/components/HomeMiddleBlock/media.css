@@ -1,0 +1,5 @@
+@media screen and (max-width: 640px) {
+    .home_middle_wrapper {
+        display: none;
+    }
+}

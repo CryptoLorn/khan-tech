@@ -1,0 +1,58 @@
+@media screen and (max-width: 640px) {
+    .home_top_block_wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    .home_top_block {
+        width: 100%;
+    }
+
+    .home_top_block_img {
+        min-width: 300px;
+        height: 300px;
+    }
+
+    .home_top_block_img img {
+        max-width: 550px;
+    }
+
+    .info_wrapper {
+        height: 300px;
+        row-gap: 20px;
+        padding-right: 10px;
+    }
+
+    .info_top {
+        row-gap: 5px;
+        margin-top: 10px;
+    }
+
+    .category {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    .date, .time {
+        font-size: 10px;
+    }
+
+    .time img {
+        width: 10px;
+        height: 10px;
+    }
+
+    .author {
+        font-size: 10px;
+    }
+}

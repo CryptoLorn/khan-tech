@@ -1,0 +1,22 @@
+@media screen and (max-width: 640px) {
+    .create_form_wrapper {
+        width: 90%;
+        height: 370px;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .create_form_input input, select {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .create_form_btn {
+        height: 25px;
+    }
+
+    .create_form_error {
+        font-size: 8px;
+    }
+}

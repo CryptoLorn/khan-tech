@@ -1,0 +1,21 @@
+@media screen and (max-width: 640px) {
+    .update_form_wrapper {
+        width: 90%;
+        height: 270px;
+        margin-left: 0;
+    }
+
+    .update_form_input input {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .update_form_btn, .update_form_btn_disable {
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .update_form_error {
+        font-size: 8px;
+    }
+}

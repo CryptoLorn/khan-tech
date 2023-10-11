@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Footer.css';
+import './media.css';
 import location from '../../img/location-pin.png';
 import email from '../../img/Combined Shape.png';
 import phone from '../../img/phone.png';
@@ -48,7 +49,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className={'footer_top_info_block_wrapper'}>
+                    <div className={'footer_top_info_block_wrapper_optional'}>
                         <div><img src={logo} alt={'logo'} /></div>
                         <div className={'footer_top_info_categories'}>Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit. Cras blandit tincidunt ut sed.

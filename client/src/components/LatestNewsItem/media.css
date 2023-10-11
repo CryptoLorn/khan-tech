@@ -1,0 +1,5 @@
+@media screen and (max-width: 640px) {
+    .latest_news_item_img img {
+        max-height: none;
+    }
+}

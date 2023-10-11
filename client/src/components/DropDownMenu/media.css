@@ -1,0 +1,29 @@
+@media screen and (max-width: 640px) {
+    .dropdown_menu_item, .submenu_item_wrapper {
+        margin-top: 1px;
+        border-top: 2px solid #0880AE;
+    }
+
+    .submenu_item_wrapper {
+        border-top: 0 solid #0880AE;
+    }
+
+    .dropdown_menu_item span, .submenu_item_wrapper span {
+        font-size: 12px;
+        height: 40px;
+    }
+
+    .submenu_item_wrapper {
+        margin-top: 80px;
+        margin-left: -190px;
+    }
+
+    .submenu_item_wrapper span {
+        height: 40px;
+    }
+
+
+    .right_arrow {
+        margin-left: 60px;
+    }
+}

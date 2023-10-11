@@ -1,8 +1,10 @@
 import React from 'react';
 
 import './Header.css';
+import './media.css';
 import logo from '../../img/logo.png';
 import DropdownMenu from '../DropDownMenu/DropdownMenu';
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 const Header = () => {
 
@@ -17,6 +19,7 @@ const Header = () => {
                     </div>
                 </div>
 
+                <BurgerMenu />
                 <div className={'header_right_block'}>
                     <div className={'header_right_block_menu'}>Home</div>
                     <div className={'header_right_block_menu'}><DropdownMenu name={'Services'} /></div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './ArticleItem.css';
+import './media.css';
 import clock from '../../img/clock.png';
 import baseURL from '../../configs/urls';
 import useFormattedDate from '../../hooks/useFormattedDate';

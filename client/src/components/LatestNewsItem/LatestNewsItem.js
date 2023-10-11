@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './LatestNewsItem.css';
+import './media.css';
 import baseURL from '../../configs/urls';
 import useFormattedDate from '../../hooks/useFormattedDate';
 
